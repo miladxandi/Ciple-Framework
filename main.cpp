@@ -11,8 +11,8 @@ int main() {
     public_key = loadKey(dotenv::getenv("PUBLIC_KEY"));
     private_key = loadKey(dotenv::getenv("PRIVATE_KEY"));
 
-    crow::SimpleApp app;
-    crow::mustache::set_global_base(dotenv::getenv("TEMPLATES"));
+    SimpleApp app;
+    set_global_base(dotenv::getenv("TEMPLATES"));
 
     addWebRoute(app);
     addApiRoute(app);

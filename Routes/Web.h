@@ -4,18 +4,19 @@
 
 #ifndef WEB_H
 #define WEB_H
-#include "crow.h"
-#include "../Helpers/Auth/JwtHelpers.h"
+#include <utility>
 
-inline void addWebRoute(crow::SimpleApp& app) {
+#include "crow.h"
+#include "../App/Http/Controller/HomeController.h"
+#include "../Helpers/Auth/JwtHelpers.h"
+using namespace std;
+using namespace crow;
+inline void addWebRoute(SimpleApp& app) {
     CROW_ROUTE(app, "/")([]() {
-        auto page = crow::mustache::load_text("index.html");
-        return page;
+        return index();
     });
-    CROW_ROUTE(app, "/<string>")([](std::string name){ //
-        auto page = crow::mustache::load("variable.html"); //
-        crow::mustache::context ctx ({{"person", name}}); //
-        return page.render(ctx); //
+    CROW_ROUTE(app, "/<string>")([](string name){ //
+        return page(std::move(name));
     });
 }
 #endif //WEB_H

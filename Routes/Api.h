@@ -6,25 +6,28 @@
 #define API_H
 #include "crow.h"
 #include "../Helpers/Auth/JwtHelpers.h"
-
-inline void addApiRoute(crow::SimpleApp& app) {
+using namespace std;
+using namespace crow;
+using namespace crow::json;
+inline void addApiRoute(SimpleApp& app) {
     CROW_ROUTE(app, "/api/")([]() {
-        return "Hello world";
-    });
-
-    CROW_ROUTE(app, "/api/encode").methods(crow::HTTPMethod::POST)
-    ([] {
-        std::vector<std::string> permissions = {"read:profile", "write:settings", "delete:account"};
-
-        crow::json::wvalue x({{"token", encoder("1", "permission", permissions)}});
+        wvalue x({{"message", "Hello World!"}});
         return x;
     });
 
-    CROW_ROUTE(app, "/api/decode").methods(crow::HTTPMethod::POST)
-    ([](const crow::request& req) {
+    CROW_ROUTE(app, "/api/encode").methods(HTTPMethod::POST)
+    ([] {
+        vector<string> permissions = {"read:profile", "write:settings", "delete:account"};
+
+        wvalue x({{"token", encoder("1", "permission", permissions)}});
+        return x;
+    });
+
+    CROW_ROUTE(app, "/api/decode").methods(HTTPMethod::POST)
+    ([](const request& req) {
         auto authorizationToken = req.get_header_value("Authorization").substr(7);
         auto decoded = decoder(authorizationToken);
-        return crow::response(decoded.get_payload());
+        return response(decoded.get_payload());
     });
 }
 #endif //API_H
