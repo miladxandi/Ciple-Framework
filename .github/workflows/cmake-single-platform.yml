@@ -26,7 +26,7 @@ jobs:
       uses: seanmiddleditch/gha-setup-ninja@v6
       with:
         # Version of ninja-build to install
-        version: "1.12.1",
+        version: "1.12.1"
         # Override default platform with one of [win, mac, linux, winarm64, linux-aarch64]
         platform: "linux"
         # Destination directory, will be added to PATH
