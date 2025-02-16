@@ -70,7 +70,8 @@ jobs:
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: |
         if [ -f "Ciple-Framework" ]; then
-          echo "Ciple-Framework exists. Running tests..."
+          echo "Ciple-Framework exists."
+          echo "Verified"
         else
           echo "Error: Ciple-Framework not found!"
           exit 1
