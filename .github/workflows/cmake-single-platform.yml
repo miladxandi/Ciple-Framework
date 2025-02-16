@@ -26,9 +26,9 @@ jobs:
       uses: seanmiddleditch/gha-setup-ninja@v6
       with:
         # Version of ninja-build to install
-        version: 1.12.1,
+        version: "1.12.1",
         # Override default platform with one of [win, mac, linux, winarm64, linux-aarch64]
-        platform: "linux",
+        platform: "linux"
         # Destination directory, will be added to PATH
         #destination: # optional, default is ninja-build
         # Proxy server
@@ -48,4 +48,3 @@ jobs:
       # Execute tests defined by the CMake configuration.
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest -C ${{env.BUILD_TYPE}}
-
