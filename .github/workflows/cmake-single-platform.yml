@@ -33,7 +33,15 @@ jobs:
         #destination: # optional, default is ninja-build
         # Proxy server
         #http_proxy: # optional
-
+    
+    - name: Get Conan
+  # You may pin to the exact commit or the version.
+  # uses: turtlebrowser/get-conan@c171f295f3f507360ee018736a6608731aa2109d
+      uses: turtlebrowser/get-conan@v1.2
+      with:
+    # Wanted conan version
+        version: "2.0.4"
+          
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
