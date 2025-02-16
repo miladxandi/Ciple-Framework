@@ -1,9 +1,25 @@
 {
-    "version": 4,
-    "vendor": {
-        "conan": {}
-    },
-    "include": [
-        "cmake-build-debug/conan/build/Debug/generators/CMakePresets.json"
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "ninja-conan-debug",
+            "displayName": "Ninja with Conan (Debug)",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/debug",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "${sourceDir}/conan_provider.cmake"
+            }
+        },
+        {
+            "name": "ninja-conan-release",
+            "displayName": "Ninja with Conan (Release)",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/release",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_PROJECT_TOP_LEVEL_INCLUDES": "${sourceDir}/conan_provider.cmake"
+            }
+        }
     ]
 }

@@ -10,12 +10,12 @@
 #include <fstream>
 #include <sstream>
 using namespace std;
-
+using namespace filesystem;
 inline string loadFile(const string &filePath) {
     // Open the file
-    ifstream loadedFile(filesystem::current_path().string()+"/"+filePath, std::ios::in);
+    ifstream loadedFile(current_path().string()+"/"+filePath, ios::in);
     if (!loadedFile.is_open()) {
-        throw std::runtime_error("Failed to open key file: " + filesystem::current_path().string()+"/"+filePath);
+        throw std::runtime_error("Failed to open the file: " + current_path().string()+"/"+filePath);
     }
 
     // Read the file content into a string
@@ -28,9 +28,9 @@ inline string loadFile(const string &filePath) {
 
 inline string loadKey(const string &filePath) {
     // Open the file
-    ifstream loadedFile(filePath, std::ios::in);
+    ifstream loadedFile(filePath, ios::in);
     if (!loadedFile.is_open()) {
-        throw std::runtime_error("Failed to open key file: "+filePath);
+        throw std::runtime_error("Failed to open the key file: "+filePath);
     }
 
     // Read the file content into a string

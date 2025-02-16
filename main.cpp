@@ -6,7 +6,7 @@
 #include "Helpers/Fs/Dotenv.h"
 int main() {
 
-    dotenv::init("../.env");
+    dotenv::init("../../.env");
     password = dotenv::getenv("PASSWORD");
     public_key = loadKey(dotenv::getenv("PUBLIC_KEY"));
     private_key = loadKey(dotenv::getenv("PRIVATE_KEY"));
