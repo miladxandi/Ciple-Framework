@@ -48,15 +48,22 @@ jobs:
       with:
         # Wanted conan version
         version: "2.0.4"
+    
+    - name: run-cmake
+    # You may pin to the exact commit or the version.
+    # uses: lukka/run-cmake@af1be47fd7c933593f687731bc6fdbee024d3ff4
+      uses: lukka/run-cmake@v10.8
+      with:
+        # Path to CMakeLists.txt.
+        cmakeListsTxtPath: ${{ github.workspace }}/CMakeLists.txt
+        # The name of the workflow preset. Optional, it cannot be used with any other preset input. This value is stored in the WORKFLOW_PRESET_NAME environment variable, and used by the default value of 'workflowPresetCmdString' input.
+        configurePreset: "ninja-conan-release"
           
+                    
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
       run: cmake --build ${{github.workspace}}/build/debug --target Ciple-Framework -j 10
-
-    - name: Build
-      # Build your program with the given configuration
-      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
     - name: Test
       working-directory: ${{github.workspace}}/build
