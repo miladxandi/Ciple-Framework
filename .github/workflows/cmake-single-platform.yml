@@ -81,7 +81,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: Ciple-Framework.exe
+          file: build/Ciple-Framework.exe
           tags: true
           draft: false
 
