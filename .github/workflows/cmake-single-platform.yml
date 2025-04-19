@@ -41,7 +41,54 @@ jobs:
           sudo cmake --build .
       - uses: xresloader/upload-to-github-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}name: Build and Release
+
+on:
+  push:
+    tags:
+      - '*.*.*.*'
+  workflow_dispatch:
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Apply dynamic build changes
+        working-directory: .
+        run: |
+          # اعمال تغییرات موقت در فایل main.cpp پیش از بیلد
+          sed -i 's|tcp://server:5510|tcp://localhost:5510|g' main.cpp
+          sed -i 's|app.port(8080).multithreaded().run();|app.bindaddr("127.0.0.1").port(8080).multithreaded().run();|g' main.cpp
+      - name: Install dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install -y \
+          build-essential \
+          cmake \
+          libzmq3-dev \
+          g++ \
+          ninja-build \
+          && sudo rm -rf /var/lib/apt/lists/*
+      - name: Download Conan & reqs
+        working-directory: .
+        run: |
+          sudo wget https://github.com/conan-io/conan/releases/download/2.8.0/conan-2.8.0-amd64.deb && sudo dpkg -i conan-2.8.0-amd64.deb
+          sudo conan profile detect && sudo conan install . --build=missing -s compiler=gcc -s compiler.version=11 -s compiler.libcxx=libstdc++11 -s compiler.cppstd=17
+      - name: Build with Cmake
+        working-directory: .
+        run: |
+          sudo cmake -G Ninja -DCMAKE_PREFIX_PATH=build/Release/generators  -DCMAKE_BUILD_TYPE=Release .
+          sudo cmake --build .
+      - uses: xresloader/upload-to-github-release@v1
+        env:
+          GITHUB_TOKEN: "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"
+        with:
+          file: Ciple-Framework
+          tags: true
+          draft: false
         with:
           file: Ciple-Framework
           tags: true
