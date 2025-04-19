@@ -74,8 +74,9 @@ jobs:
           Start-Sleep -Seconds 5
           cmake -G "Visual Studio 17 2022" -DCMAKE_PREFIX_PATH=build\generators -A x64 -DCMAKE_BUILD_TYPE=Release .
           cmake --build . --config Release
+          cd .\x64\Release\
           dir
-          cd .\x64\
+          cd ..\Release\
           dir
         shell: powershell
 
@@ -116,6 +117,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: Ciple-Framework/Ciple-Framework/Ciple-Framework
+          file: Ciple-Framework
           tags: true
           draft: false
