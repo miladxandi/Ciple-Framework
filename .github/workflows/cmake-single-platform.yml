@@ -13,6 +13,56 @@ permissions:
 
 
 jobs:
+  build-and-release-windows:
+    runs-on: windows-latest  # تغییر به runner ویندوز
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Install dependencies
+        run: |
+          choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
+          choco install ninja
+          choco install conan
+          refreshenv
+
+      - name: Conan setup
+        run: |
+          conan profile new default --detect
+          conan profile update settings.compiler.version=19.3 default
+          conan profile update settings.compiler=msvc default
+          conan profile update settings.compiler.cppstd=17 default
+
+      - name: Run Conan install
+        run: conan install . --build=missing
+
+      - name: Build with CMake
+        run: |
+          cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release .
+          cmake --build . --config Release
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Ciple-Framework-Windows
+          path: |
+            Ciple-Framework.exe
+            *.dll
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            Ciple-Framework.exe
+            *.dll
+          draft: false
+          prerelease: false
+
   build-and-release:
     runs-on: ubuntu-latest
 
