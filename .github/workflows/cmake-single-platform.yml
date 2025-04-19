@@ -63,7 +63,7 @@ jobs:
           refreshenv
           Start-Sleep -Seconds 5
           conan --version
-          conan install . --build=missing -s compiler.runtime=MD
+          conan install . --build=missing -s compiler.runtime=dynamic
         shell: powershell
 
       - name: Build with CMake
