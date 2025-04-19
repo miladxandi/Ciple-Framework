@@ -27,9 +27,10 @@ jobs:
         run: |
           choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
           choco install ninja
-          choco install conan
+          choco install conan -y --force
           Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
           refreshenv
+          Start-Sleep -Seconds 5
 
       - name: Conan setup
         run: |
