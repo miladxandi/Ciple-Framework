@@ -28,13 +28,11 @@ jobs:
           choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
           choco install ninja
           choco install conan -y --force
+          $env:Path += ";C:\ProgramData\chocolatey\bin"
           Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
-    # به‌روزرسانی PATH
-          $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-    # مسیر پیش‌فرض نصب Conan
-          $env:Path += ";C:\Program Files\Conan\"
           refreshenv
-          conan --version
+          Start-Sleep -Seconds 5
+        shell: powershell
 
       - name: Conan setup
         run: |
@@ -42,14 +40,18 @@ jobs:
           conan profile update settings.compiler.version=19.3 default
           conan profile update settings.compiler=msvc default
           conan profile update settings.compiler.cppstd=23 default
+        shell: powershell
 
       - name: Run Conan install
         run: conan install . --build=missing
+        shell: powershell
 
       - name: Build with CMake
         run: |
           cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release .
           cmake --build . --config Release
+        shell: powershell
+
       - uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
