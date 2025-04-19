@@ -42,10 +42,18 @@ jobs:
           refreshenv
           Start-Sleep -Seconds 5
           conan --version
-          conan profile new default --detect
-          conan profile update settings.compiler.version=19.3 default
-          conan profile update settings.compiler=msvc default
-          conan profile update settings.compiler.cppstd=23 default
+          conan profile detect
+          $profilePath = "$env:USERPROFILE\.conan2\profiles\default"
+          Set-Content -Path $profilePath -Value @"
+            [settings]
+            os=Windows
+            arch=x86_64
+            compiler=msvc
+            compiler.version=193
+            compiler.cppstd=23
+            build_type=Release
+          "@
+          conan profile show
         shell: powershell
 
       - name: Run Conan install
