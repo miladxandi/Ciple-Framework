@@ -3,6 +3,8 @@
 /cmake-build-release
 /cmake-build-build
 /build
+/venv
+/env
 
 # Prerequisites
 *.d

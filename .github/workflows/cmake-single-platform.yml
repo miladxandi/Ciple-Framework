@@ -72,7 +72,7 @@ jobs:
           Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
           refreshenv
           Start-Sleep -Seconds 5
-          cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release .
+          cmake -G Ninja -DCMAKE_PREFIX_PATH=build/Release/generators  -DCMAKE_BUILD_TYPE=Release .
           cmake --build . --config Release
         shell: powershell
 
@@ -108,7 +108,7 @@ jobs:
         working-directory: .
         run: |
           sudo cmake -G Ninja -DCMAKE_PREFIX_PATH=build/Release/generators  -DCMAKE_BUILD_TYPE=Release .
-          sudo cmake --build .
+          sudo cmake --build . --config Release
       - uses: xresloader/upload-to-github-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
