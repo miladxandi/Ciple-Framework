@@ -22,7 +22,7 @@ int main() {
   //   // make sure everything flushes
   //   sentry_close();
 
-    dotenv::init("../../.env");
+    dotenv::init("../.env");
     password = dotenv::getenv("PASSWORD");
     public_key = loadKey(dotenv::getenv("PUBLIC_KEY"));
     private_key = loadKey(dotenv::getenv("PRIVATE_KEY"));
