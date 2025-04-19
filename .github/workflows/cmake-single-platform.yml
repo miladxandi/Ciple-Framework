@@ -25,7 +25,6 @@ jobs:
           sudo apt-get update && sudo apt-get install -y \
           build-essential \
           cmake \
-          libzmq3-dev \
           g++ \
           ninja-build \
           && sudo rm -rf /var/lib/apt/lists/*
@@ -33,7 +32,7 @@ jobs:
         working-directory: .
         run: |
           sudo wget https://github.com/conan-io/conan/releases/download/2.8.0/conan-2.8.0-amd64.deb && sudo dpkg -i conan-2.8.0-amd64.deb
-          sudo conan profile detect && sudo conan install . --build=missing -s compiler=gcc -s compiler.version=11 -s compiler.libcxx=libstdc++11 -s compiler.cppstd=17
+          sudo conan profile detect && sudo conan install . --build=missing
       - name: Build with Cmake
         working-directory: .
         run: |
