@@ -11,11 +11,13 @@
 #include "../Helpers/Auth/JwtHelpers.h"
 using namespace std;
 using namespace crow;
-inline void addWebRoute(SimpleApp& app) {
+
+inline void addWebRoute(SimpleApp &app) {
     CROW_ROUTE(app, "/")([]() {
         return index();
     });
-    CROW_ROUTE(app, "/<string>")([](string name){ //
+    CROW_ROUTE(app, "/<string>")([](string name) {
+        //
         return page(std::move(name));
     });
 }
