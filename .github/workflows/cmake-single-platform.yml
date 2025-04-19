@@ -57,11 +57,21 @@ jobs:
         shell: powershell
 
       - name: Run Conan install
-        run: conan install . --build=missing
+        run: |
+          $env:Path += ";C:\ProgramData\chocolatey\bin"
+          Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
+          refreshenv
+          Start-Sleep -Seconds 5
+          conan --version
+          conan install . --build=missing
         shell: powershell
 
       - name: Build with CMake
         run: |
+          $env:Path += ";C:\ProgramData\chocolatey\bin"
+          Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
+          refreshenv
+          Start-Sleep -Seconds 5
           cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release .
           cmake --build . --config Release
         shell: powershell
