@@ -68,6 +68,7 @@ jobs:
 
       - name: Build with CMake
         run: |
+          dir
           $env:Path += ";C:\ProgramData\chocolatey\bin"
           Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
           refreshenv
