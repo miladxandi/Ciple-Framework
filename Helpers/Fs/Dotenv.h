@@ -42,9 +42,6 @@
 #include <functional>
 #include <cctype>
 
-#ifdef _MSC_VER
-#include <stdlib.h>
-#endif // _MSC_VER
 ///
 /// Utility class for loading environment variables from a file.
 ///
@@ -359,11 +356,7 @@ inline void dotenv::do_init(int flags, const char* filename)
 
                    // variable resolved ok, set as environment variable
                    const auto& val = p.first;
-#ifdef _MSC_VER
-                    _putenv_s(name.c_str(), val.c_str());
-#else
-                    setenv(name.c_str(), val.c_str(), ~flags & dotenv::Preserve);
-#endif // _MSC_VER
+                   setenv(name.c_str(), val.c_str(), ~flags & dotenv::Preserve);
                 }
             }
             ++i;
