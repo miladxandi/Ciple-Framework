@@ -6,6 +6,12 @@ on:
       - '*.*.*.*'
   workflow_dispatch:
 
+
+permissions:
+  contents: write  # برای ایجاد و ویرایش Release
+  actions: read    # برای دسترسی به اکشن‌ها
+
+
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
