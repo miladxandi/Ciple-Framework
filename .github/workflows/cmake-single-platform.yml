@@ -37,10 +37,10 @@ jobs:
 
       - name: Conan setup
         run: |
-          conan profile new default --detect
-          conan profile update settings.compiler.version=19.3 default
-          conan profile update settings.compiler=msvc default
-          conan profile update settings.compiler.cppstd=23 default
+          C:\ProgramData\chocolatey\bin\conan.exe profile new default --detect
+          C:\ProgramData\chocolatey\bin\conan.exe profile update settings.compiler.version=19.3 default
+          C:\ProgramData\chocolatey\bin\conan.exe profile update settings.compiler=msvc default
+          C:\ProgramData\chocolatey\bin\conan.exe profile update settings.compiler.cppstd=23 default
         shell: powershell
 
       - name: Run Conan install
