@@ -20,12 +20,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Apply dynamic build changes
-        working-directory: .
-        run: |
-          # اعمال تغییرات موقت در فایل main.cpp پیش از بیلد
-          sed -i 's|tcp://server:5510|tcp://localhost:5510|g' main.cpp
-          sed -i 's|app.port(8080).multithreaded().run();|app.bindaddr("127.0.0.1").port(8080).multithreaded().run();|g' main.cpp
       - name: Install dependencies
         run: |
           sudo apt-get update && sudo apt-get install -y \
