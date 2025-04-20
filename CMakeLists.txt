@@ -9,7 +9,7 @@ set(OUTPUT_DIR ${CMAKE_BINARY_DIR}/Resources
         COMMENT "Copying resources to output directory..."
 ))   # Destination directory
 set(CMAKE_CXX_STANDARD 23)
-#find_package(sentry REQUIRED)
+find_package(sentry REQUIRED)
 find_package(Crow REQUIRED)
 find_package(jwt-cpp REQUIRED)
 find_package(nlohmann_json REQUIRED)
@@ -23,7 +23,8 @@ add_executable(Ciple-Framework main.cpp
         Helpers/Fs/Dotenv.h
         Routes/Web.h
         Routes/Api.h
+        App/Http/Controller/HomeController.cpp
         App/Http/Controller/HomeController.h
 )
 
-target_link_libraries(Ciple-Framework Crow::Crow jwt-cpp::jwt-cpp nlohmann_json::nlohmann_json cxxopts::cxxopts)
+target_link_libraries(Ciple-Framework sentry-native::sentry-native Crow::Crow jwt-cpp::jwt-cpp nlohmann_json::nlohmann_json cxxopts::cxxopts)

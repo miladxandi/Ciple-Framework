@@ -2,23 +2,20 @@
 // Created by APPLE on 05/12/2024.
 //
 
-#ifndef WEB_H
+#pragma once
 #define WEB_H
-#include <utility>
-
 #include "crow.h"
 #include "../App/Http/Controller/HomeController.h"
 #include "../Helpers/Auth/JwtHelpers.h"
 using namespace std;
 using namespace crow;
-
+using namespace ::App::Http::Controller;
 inline void addWebRoute(SimpleApp &app) {
-    CROW_ROUTE(app, "/")([]() {
-        return index();
+    HomeController homeController(app);
+    CROW_ROUTE(app, "/")([&homeController]() {
+        return homeController.index();
     });
-    CROW_ROUTE(app, "/<string>")([](string name) {
-        //
-        return page(std::move(name));
+    CROW_ROUTE(app, "/<string>")([&homeController](string name) {
+        return homeController.page(std::move(name));
     });
 }
-#endif //WEB_H

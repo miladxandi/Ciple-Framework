@@ -76,10 +76,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           file: Release\Ciple-Framework.exe
-          tags: false
+          tags: true
           draft: false
   build-and-release-linux:
-    runs-on: slvrgame
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -107,5 +107,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           file: Ciple-Framework
-          tags: false
+          tags: true
           draft: false
