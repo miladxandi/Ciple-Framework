@@ -2,6 +2,7 @@
 # To keep your changes, remove these comment lines, but the plugin won't be able to modify your requirements
 
 requirements:
+  - "sentry-native/0.8.3"
   - "cxxopts/3.2.0"
   - "nlohmann_json/3.11.3"
   - "crowcpp-crow/1.2.0"

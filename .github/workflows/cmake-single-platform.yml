@@ -5,17 +5,12 @@ on:
     tags:
       - '*.*.*.*'
   workflow_dispatch:
-
-
 permissions:
-  contents: write  # برای ایجاد و ویرایش Release
-  actions: read    # برای دسترسی به اکشن‌ها
-
-
+  contents: write
+  actions: read
 jobs:
   build-and-release-windows:
-    runs-on: windows-latest  # تغییر به runner ویندوز
-
+    runs-on: windows-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -72,21 +67,20 @@ jobs:
           Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
           refreshenv
           Start-Sleep -Seconds 5
-          cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release .
+          cmake -G "Visual Studio 17 2022" -DCMAKE_PREFIX_PATH=build\generators -A x64 -DCMAKE_BUILD_TYPE=Release .
           cmake --build . --config Release
         shell: powershell
 
       - uses: xresloader/upload-to-github-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
-          file: Ciple-Framework.exe
+          file: Release\Ciple-Framework.exe
           tags: true
           draft: false
 
   build-and-release-linux:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -108,10 +102,10 @@ jobs:
         working-directory: .
         run: |
           sudo cmake -G Ninja -DCMAKE_PREFIX_PATH=build/Release/generators  -DCMAKE_BUILD_TYPE=Release .
-          sudo cmake --build .
+          sudo cmake --build . --config Release
       - uses: xresloader/upload-to-github-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
           file: Ciple-Framework
           tags: true
