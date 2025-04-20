@@ -5,13 +5,13 @@ on:
     tags:
       - '*.*.*.*'
   workflow_dispatch:
-
+permissions:
+  contents: write
+  actions: read
 jobs:
   build-and-release-windows:
-    runs-on: windows-latest  # تغییر به runner ویندوز
-    permissions:
-      contents: write  # برای ایجاد و ویرایش Release
-      actions: read    # برای دسترسی به اکشن‌ها
+    permissions: write-all
+    runs-on: windows-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -82,9 +82,7 @@ jobs:
 
   build-and-release-linux:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write  # برای ایجاد و ویرایش Release
-      actions: read    # برای دسترسی به اکشن‌ها
+    permissions: write-all
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
