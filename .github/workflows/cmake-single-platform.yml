@@ -76,7 +76,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           file: Release\Ciple-Framework.exe
-          tags: true
+          tags: false
           draft: false
   build-and-release-linux:
     runs-on: self-hosted
@@ -107,5 +107,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           file: Ciple-Framework
-          tags: true
+          tags: false
           draft: false
