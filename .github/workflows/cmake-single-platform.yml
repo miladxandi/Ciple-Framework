@@ -10,7 +10,6 @@ permissions:
   actions: read
 jobs:
   build-and-release-windows:
-    permissions: write-all
     runs-on: windows-latest
     steps:
       - name: Checkout repository
@@ -79,10 +78,8 @@ jobs:
           file: Release\Ciple-Framework.exe
           tags: true
           draft: false
-
   build-and-release-linux:
     runs-on: ubuntu-latest
-    permissions: write-all
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
