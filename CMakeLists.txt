@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.29)
+cmake_minimum_required(VERSION 3.25.3)
 project(Ciple-Framework)
 set(RESOURCE_DIR ${CMAKE_SOURCE_DIR}/Resources) # Source directory
 set(OUTPUT_DIR ${CMAKE_BINARY_DIR}/Resources

@@ -1,0 +1,3 @@
+D:/Projects/C++/Ciple-Framework/CMakeFiles/Ciple-Framework.dir
+D:/Projects/C++/Ciple-Framework/CMakeFiles/edit_cache.dir
+D:/Projects/C++/Ciple-Framework/CMakeFiles/rebuild_cache.dir

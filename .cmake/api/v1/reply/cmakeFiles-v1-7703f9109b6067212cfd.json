@@ -1,0 +1,332 @@
+{
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"path" : "CMakeFiles/3.29.6/CMakeSystem.cmake"
+		},
+		{
+			"path" : "conan_provider.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-Initialize.cmake"
+		},
+		{
+			"path" : "CMakeFiles/3.29.6/CMakeCCompiler.cmake"
+		},
+		{
+			"path" : "CMakeFiles/3.29.6/CMakeCXXCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/MSVC-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/MSVC.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-MSVC-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-MSVC.cmake"
+		},
+		{
+			"path" : "CMakeFiles/3.29.6/CMakeRCCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeRCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCXXInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/MSVC-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/MSVC.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-MSVC-CXX.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Platform/Windows-MSVC.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CheckCXXSourceCompiles.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/CrowConfigVersion.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/CrowConfig.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/cmakedeps_macros.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/CrowTargets.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/Crow-debug-x86-data.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/Crow-Target-debug.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/asio-config-version.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/asio-config.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/cmakedeps_macros.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/asioTargets.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/asio-debug-x86-data.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/asio-Target-debug.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/jwt-cpp-config-version.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/jwt-cpp-config.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/cmakedeps_macros.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/jwt-cppTargets.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/jwt-cpp-debug-x86-data.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/jwt-cpp-Target-debug.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/OpenSSLConfigVersion.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/OpenSSLConfig.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/cmakedeps_macros.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/OpenSSLTargets.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/OpenSSL-debug-x86-data.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/OpenSSL-Target-debug.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/ZLIBConfigVersion.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/ZLIBConfig.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/cmakedeps_macros.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/ZLIBTargets.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/ZLIB-debug-x86-data.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/ZLIB-Target-debug.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"isExternal" : true,
+			"path" : "C:/Users/istock/.conan2/p/b/opens881677f4af633/p/lib/cmake/conan-official-openssl-variables.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/nlohmann_json-config-version.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/nlohmann_json-config.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/cmakedeps_macros.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/nlohmann_jsonTargets.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/nlohmann_json-debug-x86-data.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/nlohmann_json-Target-debug.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/cxxopts-config-version.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/cxxopts-config.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/cmakedeps_macros.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/cxxoptsTargets.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/cxxopts-debug-x86-data.cmake"
+		},
+		{
+			"path" : "conan/build/Debug/generators/cxxopts-Target-debug.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "C:/Program Files/JetBrains/CLion 2024.2.1/bin/cmake/win/x64/share/cmake-3.29/Modules/CMakeFindDependencyMacro.cmake"
+		},
+		{
+			"path" : "conanfile.py"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "D:/Projects/C++/Ciple-Framework",
+		"source" : "D:/Projects/C++/Ciple-Framework"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}
