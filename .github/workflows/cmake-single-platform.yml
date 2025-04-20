@@ -79,7 +79,7 @@ jobs:
           tags: false
           draft: false
   build-and-release-linux:
-    runs-on: self-hosted
+    runs-on: slvrgame
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
