@@ -79,7 +79,7 @@ jobs:
           tags: true
           draft: false
   build-and-release-linux:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
