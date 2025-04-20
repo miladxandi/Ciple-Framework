@@ -73,9 +73,9 @@ jobs:
 
       - uses: xresloader/upload-to-github-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
-          file: "*.exe"
+          file: Release\Ciple-Framework.exe
           tags: true
           draft: false
 
@@ -105,7 +105,7 @@ jobs:
           sudo cmake --build . --config Release
       - uses: xresloader/upload-to-github-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
           file: Ciple-Framework
           tags: true
