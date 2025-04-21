@@ -97,7 +97,21 @@ jobs:
         working-directory: .
         run: |
           sudo wget https://github.com/conan-io/conan/releases/download/2.8.0/conan-2.8.0-amd64.deb && sudo dpkg -i conan-2.8.0-amd64.deb
-          sudo conan profile detect && sudo conan install . --build=missing
+          sudo conan profile detect
+          PROFILE_PATH="$HOME/.conan2/profiles/default"
+          mkdir -p "$(dirname "$PROFILE_PATH")"
+          cat > "$PROFILE_PATH" <<EOF
+          [settings]
+          os=Linux
+          arch=x86_64
+          compiler=gcc                 
+          compiler.version=11          
+          compiler.libcxx=libstdc++11  
+          compiler.cppstd=23           
+          build_type=Release
+          EOF
+          # نمایش پروفایل
+          conan install . --build=missing -s compiler.runtime=dynamic
       - name: Build with Cmake
         working-directory: .
         run: |
