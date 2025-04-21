@@ -9,9 +9,9 @@ include_directories(${CMAKE_SOURCE_DIR}/include ${CMAKE_SOURCE_DIR})
 link_directories(${CMAKE_SOURCE_DIR}/lib)
 
 # یافتن کتابخانه Sentry
-find_library(SENTRY_LIB sentry PATHS ${CMAKE_SOURCE_DIR}/include NO_DEFAULT_PATH)
+find_library(SENTRY_LIB sentry PATHS ${CMAKE_SOURCE_DIR}/lib NO_DEFAULT_PATH)
 if(NOT SENTRY_LIB)
-    message(FATAL_ERROR "Sentry library not found in ${CMAKE_SOURCE_DIR}/include")
+    message(FATAL_ERROR "Sentry library not found in ${CMAKE_SOURCE_DIR}/lib")
 endif()
 
 # یافتن پکیج‌های مورد نیاز

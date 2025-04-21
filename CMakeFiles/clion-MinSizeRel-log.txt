@@ -1,16 +1,4 @@
 /home/cmake-3.26.6-linux-x86_64/bin/cmake -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES=conan_provider.cmake -S /mnt/d/Projects/C++/Ciple-Framework -B /mnt/d/Projects/C++/Ciple-Framework
--- The C compiler identification is GNU 13.3.0
--- The CXX compiler identification is GNU 13.3.0
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Check for working C compiler: /usr/bin/cc - skipped
--- Detecting C compile features
--- Detecting C compile features - done
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: /usr/bin/c++ - skipped
--- Detecting CXX compile features
--- Detecting CXX compile features - done
 -- CMake-Conan: first find_package() found. Installing dependencies with Conan
 -- CMake-Conan: Checking if a default profile exists
 /home/miladxandi/.conan2/profiles/default
@@ -20,6 +8,10 @@
 -- CMake-Conan: CMake compiler version=13.3.0
 -- CMake-Conan: [settings] compiler=gcc
 -- CMake-Conan: [settings] compiler.version=13
+-- Performing Test _conan_is_gnu_libstdcxx
+-- Performing Test _conan_is_gnu_libstdcxx - Success
+-- Performing Test _conan_gnu_libstdcxx_is_cxx11_abi
+-- Performing Test _conan_gnu_libstdcxx_is_cxx11_abi - Success
 -- CMake-Conan: Creating profile /mnt/d/Projects/C++/Ciple-Framework/conan_host_profile
 -- CMake-Conan: Profile: 
 [settings]
@@ -92,7 +84,7 @@ crowcpp-crow/1.2.0: Already installed! (5 of 7)
 openssl/3.3.2: Already installed! (6 of 7)
 jwt-cpp/0.7.0: Already installed! (7 of 7)
 WARN: deprecated: Usage of deprecated Conan 1.X features that will be removed in Conan 2.X:
-WARN: deprecated:     'cpp_info.names' used in: zlib/1.3.1, openssl/3.3.2
+WARN: deprecated:     'cpp_info.names' used in: openssl/3.3.2, zlib/1.3.1
 WARN: deprecated:     'cpp_info.build_modules' used in: openssl/3.3.2
 WARN: deprecated:     'env_info' used in: openssl/3.3.2
 
@@ -128,13 +120,13 @@ Install finished successfully
 -- Conan: Target declared 'openssl::openssl'
 -- CMake-Conan: find_package(ZLIB) found, 'conan install' already ran
 -- Conan: Target declared 'ZLIB::ZLIB'
--- Conan: Including build module from '/home/miladxandi/.conan2/p/b/opens44c1c80babe0c/p/lib/cmake/conan-official-openssl-variables.cmake'
+-- Conan: Including build module from '/home/miladxandi/.conan2/p/b/opens8885d365026ab/p/lib/cmake/conan-official-openssl-variables.cmake'
 -- CMake-Conan: find_package(nlohmann_json) found, 'conan install' already ran
 -- Conan: Target declared 'nlohmann_json::nlohmann_json'
 -- CMake-Conan: find_package(cxxopts) found, 'conan install' already ran
 -- Conan: Target declared 'cxxopts::cxxopts'
 Sources: /mnt/d/Projects/C++/Ciple-Framework/App/Http/Controller/HomeController.cpp;/mnt/d/Projects/C++/Ciple-Framework/main.cpp
 Headers: /mnt/d/Projects/C++/Ciple-Framework/App/Http/Controller/HomeController.h;/mnt/d/Projects/C++/Ciple-Framework/Config/App.h;/mnt/d/Projects/C++/Ciple-Framework/Config/Auth.h;/mnt/d/Projects/C++/Ciple-Framework/Routes/Api.h;/mnt/d/Projects/C++/Ciple-Framework/Routes/Web.h;/mnt/d/Projects/C++/Ciple-Framework/include/sentry.h
--- Configuring done (8.0s)
+-- Configuring done (8.6s)
 -- Generating done (0.2s)
 -- Build files have been written to: /mnt/d/Projects/C++/Ciple-Framework

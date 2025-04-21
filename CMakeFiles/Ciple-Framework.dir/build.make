@@ -109,6 +109,9 @@ Ciple-Framework: CMakeFiles/Ciple-Framework.dir/App/Http/Controller/HomeControll
 Ciple-Framework: CMakeFiles/Ciple-Framework.dir/main.cpp.o
 Ciple-Framework: CMakeFiles/Ciple-Framework.dir/build.make
 Ciple-Framework: lib/libsentry.so
+Ciple-Framework: /home/miladxandi/.conan2/p/b/opens8885d365026ab/p/lib/libssl.a
+Ciple-Framework: /home/miladxandi/.conan2/p/b/opens8885d365026ab/p/lib/libcrypto.a
+Ciple-Framework: /home/miladxandi/.conan2/p/b/zlib611290c18dc03/p/lib/libz.a
 Ciple-Framework: CMakeFiles/Ciple-Framework.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/d/Projects/C++/Ciple-Framework/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Ciple-Framework"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Ciple-Framework.dir/link.txt --verbose=$(VERBOSE)

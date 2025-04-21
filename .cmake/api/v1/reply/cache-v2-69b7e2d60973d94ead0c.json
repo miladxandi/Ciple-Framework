@@ -154,7 +154,7 @@
 					"value" : "CXX compiler"
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "/usr/bin/c++"
 		},
 		{
@@ -282,7 +282,7 @@
 					"value" : "C compiler"
 				}
 			],
-			"type" : "STRING",
+			"type" : "FILEPATH",
 			"value" : "/usr/bin/cc"
 		},
 		{
@@ -1247,7 +1247,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "/mnt/d/Projects/C++/Ciple-Framework/conan/build/Debug/generators"
+			"value" : "/mnt/d/Projects/C++/Ciple-Framework/conan/build/MinSizeRel/generators"
 		},
 		{
 			"name" : "OpenSSL_DIR",
@@ -1259,7 +1259,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "/mnt/d/Projects/C++/Ciple-Framework/conan/build/Debug/generators"
+			"value" : "/mnt/d/Projects/C++/Ciple-Framework/conan/build/MinSizeRel/generators"
 		},
 		{
 			"name" : "SENTRY_LIB",
@@ -1283,7 +1283,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "/mnt/d/Projects/C++/Ciple-Framework/conan/build/Debug/generators"
+			"value" : "/mnt/d/Projects/C++/Ciple-Framework/conan/build/MinSizeRel/generators"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
@@ -1343,7 +1343,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "/mnt/d/Projects/C++/Ciple-Framework/conan/build/Debug/generators"
+			"value" : "/mnt/d/Projects/C++/Ciple-Framework/conan/build/MinSizeRel/generators"
 		},
 		{
 			"name" : "cxxopts_DIR",
@@ -1355,7 +1355,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "/mnt/d/Projects/C++/Ciple-Framework/conan/build/Debug/generators"
+			"value" : "/mnt/d/Projects/C++/Ciple-Framework/conan/build/MinSizeRel/generators"
 		},
 		{
 			"name" : "jwt-cpp_DIR",
@@ -1367,7 +1367,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "/mnt/d/Projects/C++/Ciple-Framework/conan/build/Debug/generators"
+			"value" : "/mnt/d/Projects/C++/Ciple-Framework/conan/build/MinSizeRel/generators"
 		},
 		{
 			"name" : "nlohmann_json_DIR",
@@ -1379,7 +1379,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "/mnt/d/Projects/C++/Ciple-Framework/conan/build/Debug/generators"
+			"value" : "/mnt/d/Projects/C++/Ciple-Framework/conan/build/MinSizeRel/generators"
 		}
 	],
 	"kind" : "cache",
