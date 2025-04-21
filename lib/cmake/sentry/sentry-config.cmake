@@ -25,12 +25,12 @@ endmacro()
 ####################################################################################
 include(CMakeFindDependencyMacro)
 
-set(SENTRY_BACKEND breakpad)
+set(SENTRY_BACKEND crashpad)
 set(SENTRY_TRANSPORT curl)
 set(SENTRY_BUILD_SHARED_LIBS ON)
 set(SENTRY_LINK_PTHREAD ON)
 set(SENTRY_TRANSPORT_COMPRESSION OFF)
-set(SENTRY_BREAKPAD_SYSTEM OFF)
+set(SENTRY_BREAKPAD_SYSTEM )
 set(CRASHPAD_ZLIB_SYSTEM ON)
 
 if(NOT SENTRY_BUILD_SHARED_LIBS)

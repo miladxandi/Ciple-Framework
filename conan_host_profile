@@ -1,11 +1,11 @@
 [settings]
-arch=x86
-os=Windows
-compiler=msvc
-compiler.version=194
-compiler.runtime=dynamic
+arch=x86_64
+os=Linux
+compiler=gcc
+compiler.version=13
 compiler.cppstd=23
+compiler.libcxx=libstdc++11
 build_type=Debug
 [conf]
-tools.cmake.cmaketoolchain:generator=Ninja
-tools.build:compiler_executables={"c":"D:/Programs/Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/bin/Hostx86/x86/cl.exe","cpp":"D:/Programs/Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/bin/Hostx86/x86/cl.exe","rc":"C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x86/rc.exe"}
+tools.cmake.cmaketoolchain:generator=Unix Makefiles
+tools.build:compiler_executables={"c":"/usr/bin/cc","cpp":"/usr/bin/c++"}

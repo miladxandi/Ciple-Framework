@@ -23,9 +23,18 @@ endif()
 
 ########## 'compilers' block #############
 
-set(CMAKE_C_COMPILER "D:/Programs/Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/bin/Hostx86/x86/cl.exe")
-set(CMAKE_CXX_COMPILER "D:/Programs/Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/bin/Hostx86/x86/cl.exe")
-set(CMAKE_RC_COMPILER "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x86/rc.exe")
+set(CMAKE_C_COMPILER "/usr/bin/cc")
+set(CMAKE_CXX_COMPILER "/usr/bin/c++")
+
+
+########## 'arch_flags' block #############
+# Define C++ flags, C flags and linker flags from 'settings.arch'
+
+message(STATUS "Conan toolchain: Defining architecture flag: -m64")
+string(APPEND CONAN_CXX_FLAGS " -m64")
+string(APPEND CONAN_C_FLAGS " -m64")
+string(APPEND CONAN_SHARED_LINKER_FLAGS " -m64")
+string(APPEND CONAN_EXE_LINKER_FLAGS " -m64")
 
 
 ########## 'libcxx' block #############
@@ -34,27 +43,15 @@ set(CMAKE_RC_COMPILER "C:/Program Files (x86)/Windows Kits/10/bin/10.0.26100.0/x
 
 
 
-########## 'vs_runtime' block #############
-# Definition of VS runtime CMAKE_MSVC_RUNTIME_LIBRARY, from settings build_type,
-# compiler.runtime, compiler.runtime_type
-
-cmake_policy(GET CMP0091 POLICY_CMP0091)
-if(NOT "${POLICY_CMP0091}" STREQUAL NEW)
-    message(FATAL_ERROR "The CMake policy CMP0091 must be NEW, but is '${POLICY_CMP0091}'")
-endif()
-message(STATUS "Conan toolchain: Setting CMAKE_MSVC_RUNTIME_LIBRARY=$<$<CONFIG:Debug>:MultiThreadedDebugDLL>")
-set(CMAKE_MSVC_RUNTIME_LIBRARY "$<$<CONFIG:Debug>:MultiThreadedDebugDLL>")
-
-
 ########## 'cppstd' block #############
 # Define the C++ and C standards from 'compiler.cppstd' and 'compiler.cstd'
 
 function(conan_modify_std_watch variable access value current_list_file stack)
-    set(conan_watched_std_variable "23")
+    set(conan_watched_std_variable 23)
     if (${variable} STREQUAL "CMAKE_C_STANDARD")
-        set(conan_watched_std_variable "")
+        set(conan_watched_std_variable )
     endif()
-    if ("${access}" STREQUAL "MODIFIED_ACCESS" AND NOT "${value}" STREQUAL "${conan_watched_std_variable}")
+    if (${access} STREQUAL "MODIFIED_ACCESS" AND NOT ${value} STREQUAL ${conan_watched_std_variable})
         message(STATUS "Warning: Standard ${variable} value defined in conan_toolchain.cmake to ${conan_watched_std_variable} has been modified to ${value} by ${current_list_file}")
     endif()
     unset(conan_watched_std_variable)
@@ -125,49 +122,32 @@ endif()
 
 ########## 'find_paths' block #############
 # Define paths to find packages, programs, libraries, etc.
-if(EXISTS "${CMAKE_CURRENT_LIST_DIR}/conan_cmakedeps_paths.cmake")
-  message(STATUS "Conan toolchain: Including CMakeDeps generated conan_find_paths.cmake")
-  include("${CMAKE_CURRENT_LIST_DIR}/conan_cmakedeps_paths.cmake")
-else()
 
 set(CMAKE_FIND_PACKAGE_PREFER_CONFIG ON)
 
 # Definition of CMAKE_MODULE_PATH
-list(PREPEND CMAKE_MODULE_PATH "C:/Users/istock/.conan2/p/b/opens881677f4af633/p/lib/cmake")
+list(PREPEND CMAKE_MODULE_PATH "/home/miladxandi/.conan2/p/b/opens44c1c80babe0c/p/lib/cmake")
 # the generators folder (where conan generates files, like this toolchain)
 list(PREPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR})
 
 # Definition of CMAKE_PREFIX_PATH, CMAKE_XXXXX_PATH
 # The explicitly defined "builddirs" of "host" context dependencies must be in PREFIX_PATH
-list(PREPEND CMAKE_PREFIX_PATH "C:/Users/istock/.conan2/p/b/opens881677f4af633/p/lib/cmake")
+list(PREPEND CMAKE_PREFIX_PATH "/home/miladxandi/.conan2/p/b/opens44c1c80babe0c/p/lib/cmake")
 # The Conan local "generators" folder, where this toolchain is saved.
 list(PREPEND CMAKE_PREFIX_PATH ${CMAKE_CURRENT_LIST_DIR} )
-list(PREPEND CMAKE_LIBRARY_PATH "C:/Users/istock/.conan2/p/b/opens881677f4af633/p/lib" "C:/Users/istock/.conan2/p/b/zlibf682a248bc5b0/p/lib")
-list(PREPEND CMAKE_INCLUDE_PATH "C:/Users/istock/.conan2/p/cxxop782c19b5a4d3b/p/include" "C:/Users/istock/.conan2/p/nlohm0567ffc90cfc1/p/include" "C:/Users/istock/.conan2/p/crowc9fea44d7b7fb7/p/include" "C:/Users/istock/.conan2/p/asioaf1eb798e94b4/p/include" "C:/Users/istock/.conan2/p/jwt-cc62de6eb33ddf/p/include" "C:/Users/istock/.conan2/p/b/opens881677f4af633/p/include" "C:/Users/istock/.conan2/p/b/zlibf682a248bc5b0/p/include")
-set(CONAN_RUNTIME_LIB_DIRS "C:/Users/istock/.conan2/p/b/opens881677f4af633/p/bin" "C:/Users/istock/.conan2/p/b/zlibf682a248bc5b0/p/bin" )
+list(PREPEND CMAKE_LIBRARY_PATH "/home/miladxandi/.conan2/p/b/opens44c1c80babe0c/p/lib" "/home/miladxandi/.conan2/p/b/zlibe2d9f04a5c6fe/p/lib")
+list(PREPEND CMAKE_INCLUDE_PATH "/home/miladxandi/.conan2/p/cxxop782c19b5a4d3b/p/include" "/home/miladxandi/.conan2/p/nlohm0567ffc90cfc1/p/include" "/home/miladxandi/.conan2/p/crowc9fea44d7b7fb7/p/include" "/home/miladxandi/.conan2/p/asioaf1eb798e94b4/p/include" "/home/miladxandi/.conan2/p/jwt-cc62de6eb33ddf/p/include" "/home/miladxandi/.conan2/p/b/opens44c1c80babe0c/p/include" "/home/miladxandi/.conan2/p/b/zlibe2d9f04a5c6fe/p/include")
+set(CONAN_RUNTIME_LIB_DIRS "/home/miladxandi/.conan2/p/b/opens44c1c80babe0c/p/lib" "/home/miladxandi/.conan2/p/b/zlibe2d9f04a5c6fe/p/lib" )
 
-if(NOT DEFINED CMAKE_FIND_ROOT_PATH_MODE_PACKAGE OR CMAKE_FIND_ROOT_PATH_MODE_PACKAGE STREQUAL "ONLY")
-    set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE "BOTH")
-endif()
-if(NOT DEFINED CMAKE_FIND_ROOT_PATH_MODE_PROGRAM OR CMAKE_FIND_ROOT_PATH_MODE_PROGRAM STREQUAL "ONLY")
-    set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM "BOTH")
-endif()
-if(NOT DEFINED CMAKE_FIND_ROOT_PATH_MODE_LIBRARY OR CMAKE_FIND_ROOT_PATH_MODE_LIBRARY STREQUAL "ONLY")
-    set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY "BOTH")
-endif()
-if(NOT DEFINED CMAKE_FIND_ROOT_PATH_MODE_INCLUDE OR CMAKE_FIND_ROOT_PATH_MODE_INCLUDE STREQUAL "ONLY")
-    set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE "BOTH")
-endif()
-endif()
 
 
 ########## 'pkg_config' block #############
 # Define pkg-config from 'tools.gnu:pkg_config' executable and paths
 
 if (DEFINED ENV{PKG_CONFIG_PATH})
-set(ENV{PKG_CONFIG_PATH} "${CMAKE_CURRENT_LIST_DIR};$ENV{PKG_CONFIG_PATH}")
+set(ENV{PKG_CONFIG_PATH} "${CMAKE_CURRENT_LIST_DIR}:$ENV{PKG_CONFIG_PATH}")
 else()
-set(ENV{PKG_CONFIG_PATH} "${CMAKE_CURRENT_LIST_DIR};")
+set(ENV{PKG_CONFIG_PATH} "${CMAKE_CURRENT_LIST_DIR}:")
 endif()
 
 

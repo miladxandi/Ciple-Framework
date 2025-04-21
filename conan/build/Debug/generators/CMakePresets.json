@@ -12,22 +12,14 @@
         {
             "name": "conan-debug",
             "displayName": "'conan-debug' config",
-            "description": "'conan-debug' configure using 'Ninja' generator",
-            "generator": "Ninja",
+            "description": "'conan-debug' configure using 'Unix Makefiles' generator",
+            "generator": "Unix Makefiles",
             "cacheVariables": {
                 "CMAKE_POLICY_DEFAULT_CMP0091": "NEW",
                 "CMAKE_BUILD_TYPE": "Debug"
             },
-            "toolset": {
-                "value": "v143",
-                "strategy": "external"
-            },
-            "architecture": {
-                "value": "x86",
-                "strategy": "external"
-            },
-            "toolchainFile": "generators\\conan_toolchain.cmake",
-            "binaryDir": "D:\\Projects\\C++\\Ciple-Framework\\conan\\build\\Debug"
+            "toolchainFile": "generators/conan_toolchain.cmake",
+            "binaryDir": "/mnt/d/Projects/C++/Ciple-Framework/conan/build/Debug"
         }
     ],
     "buildPresets": [
@@ -42,7 +34,7 @@
             "name": "conan-debug",
             "configurePreset": "conan-debug",
             "environment": {
-                "OPENSSL_MODULES": "C:\\Users\\istock\\.conan2\\p\\b\\opens881677f4af633\\p\\lib\\ossl-modules"
+                "OPENSSL_MODULES": "/home/miladxandi/.conan2/p/b/opens44c1c80babe0c/p/lib/ossl-modules"
             }
         }
     ]
