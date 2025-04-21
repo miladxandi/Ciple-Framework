@@ -1,1 +1,0 @@
-. "/mnt/d/Projects/C++/Ciple-Framework/conan/build/Debug/generators/conanrunenv-debug-x86_64.sh"

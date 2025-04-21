@@ -1,1 +1,0 @@
-. "/mnt/d/Projects/C++/Ciple-Framework/conan/build/MinSizeRel/generators/deactivate_conanrunenv-minsizerel-x86_64.sh"

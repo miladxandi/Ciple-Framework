@@ -4,17 +4,18 @@ project(Ciple-Framework)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# تنظیم مسیرهای include و lib
-include_directories(${CMAKE_SOURCE_DIR}/include ${CMAKE_SOURCE_DIR})
-link_directories(${CMAKE_SOURCE_DIR}/lib)
-
-# یافتن کتابخانه Sentry
-find_library(SENTRY_LIB sentry PATHS ${CMAKE_SOURCE_DIR}/lib NO_DEFAULT_PATH)
-if(NOT SENTRY_LIB)
-    message(FATAL_ERROR "Sentry library not found in ${CMAKE_SOURCE_DIR}/lib")
-endif()
+## تنظیم مسیرهای include و lib
+#include_directories(${CMAKE_SOURCE_DIR}/include ${CMAKE_SOURCE_DIR})
+#link_directories(${CMAKE_SOURCE_DIR}/lib)
+#
+## یافتن کتابخانه Sentry
+#find_library(SENTRY_LIB sentry PATHS ${CMAKE_SOURCE_DIR}/lib NO_DEFAULT_PATH)
+#if(NOT SENTRY_LIB)
+#    message(FATAL_ERROR "Sentry library not found in ${CMAKE_SOURCE_DIR}/lib")
+#endif()
 
 # یافتن پکیج‌های مورد نیاز
+find_package(sentry REQUIRED)
 find_package(Crow REQUIRED)
 find_package(jwt-cpp REQUIRED)
 find_package(nlohmann_json REQUIRED)
@@ -49,8 +50,8 @@ message("Headers: ${HEADERS}")
 add_executable(Ciple-Framework ${SOURCES} ${HEADERS})
 
 # لینک کردن کتابخانه‌ها
-target_link_libraries(Ciple-Framework PRIVATE
-        ${SENTRY_LIB}
+target_link_libraries(Ciple-Framework
+        sentry-native::sentry-native
         Crow::Crow
         jwt-cpp::jwt-cpp
         nlohmann_json::nlohmann_json
@@ -69,21 +70,21 @@ if(EXISTS ${RESOURCE_DIR})
 endif()
 
 # کپی DLLهای Sentry به پوشه خروجی
-if(EXISTS ${CMAKE_SOURCE_DIR}/bin)
-    file(GLOB SENTRY_DLLS ${CMAKE_SOURCE_DIR}/bin/*.dll)
-    foreach(DLL ${SENTRY_DLLS})
-        add_custom_command(TARGET Ciple-Framework POST_BUILD
-                COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                ${DLL} $<TARGET_FILE_DIR:Ciple-Framework>
-                COMMENT "Copying ${DLL} to output directory..."
-        )
-    endforeach()
-    file(GLOB SENTRY_DLLS ${CMAKE_SOURCE_DIR}/bin/*.so)
-    foreach(DLL ${SENTRY_DLLS})
-        add_custom_command(TARGET Ciple-Framework POST_BUILD
-                COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                ${DLL} $<TARGET_FILE_DIR:Ciple-Framework>
-                COMMENT "Copying ${DLL} to output directory..."
-        )
-    endforeach()
-endif()
+#if(EXISTS ${CMAKE_SOURCE_DIR}/bin)
+#    file(GLOB SENTRY_DLLS ${CMAKE_SOURCE_DIR}/bin/*.dll)
+#    foreach(DLL ${SENTRY_DLLS})
+#        add_custom_command(TARGET Ciple-Framework POST_BUILD
+#                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+#                ${DLL} $<TARGET_FILE_DIR:Ciple-Framework>
+#                COMMENT "Copying ${DLL} to output directory..."
+#        )
+#    endforeach()
+#    file(GLOB SENTRY_DLLS ${CMAKE_SOURCE_DIR}/bin/*.so)
+#    foreach(DLL ${SENTRY_DLLS})
+#        add_custom_command(TARGET Ciple-Framework POST_BUILD
+#                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+#                ${DLL} $<TARGET_FILE_DIR:Ciple-Framework>
+#                COMMENT "Copying ${DLL} to output directory..."
+#        )
+#    endforeach()
+#endif()
