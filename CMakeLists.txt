@@ -1,8 +1,7 @@
-cmake_minimum_required(VERSION 3.25.3)
+cmake_minimum_required(VERSION 3.29)
 project(Ciple-Framework)
 
 set(CMAKE_CXX_STANDARD 23)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 ## تنظیم مسیرهای include و lib
 #include_directories(${CMAKE_SOURCE_DIR}/include ${CMAKE_SOURCE_DIR})
@@ -57,6 +56,7 @@ target_link_libraries(Ciple-Framework
         nlohmann_json::nlohmann_json
         cxxopts::cxxopts
 )
+
 
 # کپی منابع به پوشه خروجی
 set(RESOURCE_DIR ${CMAKE_SOURCE_DIR}/Resources)
