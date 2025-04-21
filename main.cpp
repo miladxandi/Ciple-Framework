@@ -14,7 +14,6 @@ int main() {
     // https://docs.sentry.io/platforms/native/configuration/options/#database-path
     sentry_options_set_database_path(options, ".sentry-native");
     sentry_options_set_release(options, "my-project-name@2.3.12");
-    sentry_options_set_backend(options, "inproc");
     sentry_options_set_debug(options, 1);
     sentry_init(options);
 
