@@ -1,0 +1,1 @@
+/usr/bin/c++ -Os -DNDEBUG "CMakeFiles/Ciple-Framework.dir/App/Http/Controller/HomeController.cpp.o" "CMakeFiles/Ciple-Framework.dir/main.cpp.o" -o Ciple-Framework   -L/mnt/d/Projects/C++/Ciple-Framework/lib  -Wl,-rpath,/mnt/d/Projects/C++/Ciple-Framework/lib lib/libsentry.so 
