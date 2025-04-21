@@ -78,4 +78,12 @@ if(EXISTS ${CMAKE_SOURCE_DIR}/bin)
                 COMMENT "Copying ${DLL} to output directory..."
         )
     endforeach()
+    file(GLOB SENTRY_DLLS ${CMAKE_SOURCE_DIR}/bin/*.so)
+    foreach(DLL ${SENTRY_DLLS})
+        add_custom_command(TARGET Ciple-Framework POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                ${DLL} $<TARGET_FILE_DIR:Ciple-Framework>
+                COMMENT "Copying ${DLL} to output directory..."
+        )
+    endforeach()
 endif()
