@@ -107,6 +107,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
-          file: Ciple-Framework
+          file: Ciple-Frameworknstall
           tags: true
           draft: false
