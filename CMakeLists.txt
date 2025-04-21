@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.25)
 project(Ciple-Framework)
 
 set(CMAKE_CXX_STANDARD 23)
-
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 ## تنظیم مسیرهای include و lib
 #include_directories(${CMAKE_SOURCE_DIR}/include ${CMAKE_SOURCE_DIR})
 #link_directories(${CMAKE_SOURCE_DIR}/lib)
