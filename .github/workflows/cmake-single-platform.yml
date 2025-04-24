@@ -97,7 +97,11 @@ jobs:
         working-directory: .
         run: |
           sudo wget https://github.com/conan-io/conan/releases/download/2.8.0/conan-2.8.0-amd64.deb && sudo dpkg -i conan-2.8.0-amd64.deb
-          sudo conan profile detect && sudo conan install . --build=missing
+          sudo conan profile detect
+          conan remote update conancenter --url="https://center2.conan.io"
+          PROFILE_PATH="$HOME/.conan2/profiles/default"
+          mkdir -p "$(dirname "$PROFILE_PATH")"
+          sudo conan install . --build=missing
       - name: Build with Cmake
         working-directory: .
         run: |

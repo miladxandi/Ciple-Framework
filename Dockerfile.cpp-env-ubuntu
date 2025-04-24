@@ -36,3 +36,10 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.31.0/cmake-3.31.0
   && make install \
   && cd .. \
   && rm -rf cmake-3.31.0 cmake-3.31.0.tar.gz
+
+RUN wget https://github.com/conan-io/conan/releases/download/2.8.0/conan-2.8.0-amd64.deb && sudo dpkg -i conan-2.8.0-amd64.deb \
+  conan profile detect \
+  conan remote update conancenter --url="https://center2.conan.io" \
+  PROFILE_PATH="$HOME/.conan2/profiles/default" \
+  mkdir -p "$(dirname "$PROFILE_PATH")" \
+  conan install . --build=missing \
