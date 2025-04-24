@@ -55,6 +55,7 @@ target_link_libraries(Ciple-Framework
         nlohmann_json::nlohmann_json
         cxxopts::cxxopts
 )
+target_link_libraries(Ciple-Framework ${CONAN_LIBS})
 
 
 # کپی منابع به پوشه خروجی
