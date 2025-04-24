@@ -101,6 +101,16 @@ jobs:
           sudo conan remote update conancenter --url="https://center2.conan.io"
           PROFILE_PATH="$HOME/.conan2/profiles/default"
           mkdir -p "$(dirname "$PROFILE_PATH")"
+          cat > "$PROFILE_PATH" <<EOF
+            [settings]
+            os=Linux
+            arch=x86_64
+            compiler=gcc                 
+            compiler.version=11          
+            compiler.libcxx=libstdc++11  
+            compiler.cppstd=23           
+            build_type=Release
+          EOF
           sudo conan install . --build=missing
       - name: Build with Cmake
         working-directory: .
