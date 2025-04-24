@@ -45,7 +45,9 @@ message("Sources: ${SOURCES}")
 message("Headers: ${HEADERS}")
 
 # تعریف هدف اجرایی
-add_executable(Ciple-Framework ${SOURCES} ${HEADERS})
+add_executable(Ciple-Framework ${SOURCES} ${HEADERS}
+        App/Http/Controller/ContentApiController.cpp
+        App/Http/Controller/ContentApiController.h)
 
 # لینک کردن کتابخانه‌ها
 target_link_libraries(Ciple-Framework

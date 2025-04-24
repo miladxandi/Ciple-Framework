@@ -17,15 +17,9 @@ int main() {
     sentry_options_set_release(options, "my-project-name@2.3.12");
     sentry_options_set_debug(options, 1);
     sentry_options_set_auto_session_tracking(options, 1);
+    sentry_options_set_traces_sample_rate(options, 0.2);
 
     sentry_init(options);
-
-    sentry_capture_event(sentry_value_new_message_event(
-            /*   level */ SENTRY_LEVEL_INFO,
-            /*  logger */ "custom",
-            /* message */ "It works!"
-    ));
-
 
     sentry_start_session();
     // make sure everything flushes
@@ -41,6 +35,6 @@ int main() {
         addWebRoute(app);
         addApiRoute(app);
 
-        app.port(18080).run();
+        app.port(18080).multithreaded().run();
     sentry_end_session();
 }
