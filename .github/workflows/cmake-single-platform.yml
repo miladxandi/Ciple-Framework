@@ -80,7 +80,7 @@ jobs:
           draft: false
 
   build-and-release-linux:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2

@@ -1,0 +1,38 @@
+# Build and run:
+#   docker build -t clion/ubuntu/cpp-env:1.0 -f Dockerfile.cpp-env-ubuntu .
+
+FROM ubuntu:20.04
+
+RUN DEBIAN_FRONTEND="noninteractive" apt-get update && apt-get -y install tzdata
+
+RUN apt-get update \
+  && apt-get install -y build-essential \
+      gcc \
+      g++ \
+      gdb \
+      clang \
+      make \
+      ninja-build \
+      autoconf \
+      automake \
+      libtool \
+      valgrind \
+      locales-all \
+      dos2unix \
+      rsync \
+      tar \
+      python \
+      python-dev \
+      wget \
+      libssl-dev \
+  && apt-get clean
+
+# Install CMake 3.31
+RUN wget https://github.com/Kitware/CMake/releases/download/v3.31.0/cmake-3.31.0.tar.gz \
+  && tar -xzf cmake-3.31.0.tar.gz \
+  && cd cmake-3.31.0 \
+  && ./bootstrap --prefix=/usr \
+  && make -j$(nproc) \
+  && make install \
+  && cd .. \
+  && rm -rf cmake-3.31.0 cmake-3.31.0.tar.gz
