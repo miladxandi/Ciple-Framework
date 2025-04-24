@@ -53,8 +53,8 @@ RUN useradd -m developer && \
 USER developer
 WORKDIR /home/developer
 
-RUN wget https://github.com/conan-io/conan/releases/download/2.8.0/conan-2.8.0-amd64.deb \
-    dpkg -i conan-2.8.0-amd64.deb
+RUN wget https://github.com/conan-io/conan/releases/download/2.8.0/conan-2.8.0-amd64.deb
+RUN dpkg -i conan-2.8.0-amd64.deb
 
 # Configure Conan
 RUN conan profile detect --force && \
