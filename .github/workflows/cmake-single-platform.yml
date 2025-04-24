@@ -85,7 +85,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
       - name: Install dependencies
         run: |
           sudo apt-get update && sudo apt-get install -y \
@@ -105,10 +104,12 @@ jobs:
         run: |
           sudo cmake -G Ninja -DCMAKE_PREFIX_PATH=build/Release/generators  -DCMAKE_BUILD_TYPE=Release .
           sudo cmake --build . --config Release
-      - uses: xresloader/upload-to-github-release@v1
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         with:
-          file: Ciple-Framework
-          tags: true
-          draft: false
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # نیاز به خروجی از مرحله ایجاد ریلیز
+          asset_path: ./Ciple-Framework
+          asset_name: Ciple-Framework
+          asset_content_type: application/octet-stream
