@@ -23,6 +23,7 @@ RUN apt-get update \
       tar \
       python \
       python-dev \
+      python3.8-venv \
       wget \
       libssl-dev \
   && apt-get clean
@@ -37,9 +38,25 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.31.0/cmake-3.31.0
   && cd .. \
   && rm -rf cmake-3.31.0 cmake-3.31.0.tar.gz
 
-RUN wget https://github.com/conan-io/conan/releases/download/2.8.0/conan-2.8.0-amd64.deb && sudo dpkg -i conan-2.8.0-amd64.deb \
-  conan profile detect \
-  conan remote update conancenter --url="https://center2.conan.io" \
-  PROFILE_PATH="$HOME/.conan2/profiles/default" \
-  mkdir -p "$(dirname "$PROFILE_PATH")" \
-  conan install . --build=missing \
+# Install Conan properly
+RUN python3 -m venv /opt/conanenv
+
+
+# Install pip and Conan in the virtual environment
+RUN /opt/conanenv/bin/python -m pip install --upgrade pip && \
+    /opt/conanenv/bin/python -m pip install conan==2.8.0
+
+RUN useradd -m developer && \
+    mkdir -p /home/developer/.conan2/profiles && \
+    chown -R developer:developer /home/developer
+
+USER developer
+WORKDIR /home/developer
+
+RUN wget https://github.com/conan-io/conan/releases/download/2.8.0/conan-2.8.0-amd64.deb \
+    dpkg -i conan-2.8.0-amd64.deb
+
+# Configure Conan
+RUN conan profile detect --force && \
+    conan config set general.default_profile=default && \
+    conan remote update conancenter --url="https://center.conan.io"
