@@ -58,6 +58,7 @@ jobs:
           refreshenv
           Start-Sleep -Seconds 5
           conan --version
+          conan remote update conancenter --url="https://center2.conan.io"
           conan install . --build=missing -s compiler.runtime=dynamic
         shell: powershell
 
@@ -84,7 +85,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
       - name: Install dependencies
         run: |
           sudo apt-get update && sudo apt-get install -y \
