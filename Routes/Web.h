@@ -11,11 +11,16 @@ using namespace std;
 using namespace crow;
 using namespace ::App::Http::Controller;
 inline void addWebRoute(SimpleApp &app) {
-    HomeController homeController(app);
-    CROW_ROUTE(app, "/")([&homeController]() {
-        return homeController.index();
+    CROW_ROUTE(app, "/")([]() {
+        return HomeController::index();
     });
-    CROW_ROUTE(app, "/<string>")([&homeController](string name) {
-        return homeController.page(std::move(name));
+    CROW_ROUTE(app, "/form/en")([](const request &req, response &res){
+        return res.redirect("https://slvr.formaloo.co/4dushl");
+    });
+    CROW_ROUTE(app, "/form/ar")([](const request &req, response &res){
+        return res.redirect("https://slvr.formaloo.co/yqx8ob");
+    });
+    CROW_ROUTE(app, "/<string>")([](string name) {
+        return HomeController::page(std::move(name));
     });
 }

@@ -9,76 +9,76 @@ permissions:
   contents: write
   actions: read
 jobs:
-  build-and-release-windows:
-    runs-on: windows-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Setup MSVC
-        uses: ilammy/msvc-dev-cmd@v1
-
-      - name: Install dependencies
-        run: |
-          choco install conan -y --force
-          $env:Path += ";C:\ProgramData\chocolatey\bin"
-          Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
-          refreshenv
-          Start-Sleep -Seconds 5
-          conan --version
-          choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
-          choco install ninja
-        shell: powershell
-
-      - name: Conan setup
-        run: |
-          $env:Path += ";C:\ProgramData\chocolatey\bin"
-          Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
-          refreshenv
-          Start-Sleep -Seconds 5
-          conan --version
-          conan profile detect
-          $profilePath = "$env:USERPROFILE\.conan2\profiles\default"
-          Set-Content -Path $profilePath -Value @"
-            [settings]
-            os=Windows
-            arch=x86_64
-            compiler=msvc
-            compiler.version=193
-            compiler.cppstd=23
-            build_type=Release
-          "@
-          conan profile show
-        shell: powershell
-
-      - name: Run Conan install
-        run: |
-          $env:Path += ";C:\ProgramData\chocolatey\bin"
-          Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
-          refreshenv
-          Start-Sleep -Seconds 5
-          conan --version
-          conan remote update conancenter --url="https://center2.conan.io"
-          conan install . --build=missing -s compiler.runtime=dynamic
-        shell: powershell
-
-      - name: Build with CMake
-        run: |
-          $env:Path += ";C:\ProgramData\chocolatey\bin"
-          Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
-          refreshenv
-          Start-Sleep -Seconds 5
-          cmake -G "Visual Studio 17 2022" -DCMAKE_PREFIX_PATH=build\generators -A x64 -DCMAKE_BUILD_TYPE=Release .
-          cmake --build . --config Release
-        shell: powershell
-
-      - uses: xresloader/upload-to-github-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-        with:
-          file: Release\Ciple-Framework.exe
-          tags: true
-          draft: false
+#  build-and-release-windows:
+#    runs-on: windows-latest
+#    steps:
+#      - name: Checkout repository
+#        uses: actions/checkout@v2
+#
+#      - name: Setup MSVC
+#        uses: ilammy/msvc-dev-cmd@v1
+#
+#      - name: Install dependencies
+#        run: |
+#          choco install conan -y --force
+#          $env:Path += ";C:\ProgramData\chocolatey\bin"
+#          Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
+#          refreshenv
+#          Start-Sleep -Seconds 5
+#          conan --version
+#          choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
+#          choco install ninja
+#        shell: powershell
+#
+#      - name: Conan setup
+#        run: |
+#          $env:Path += ";C:\ProgramData\chocolatey\bin"
+#          Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
+#          refreshenv
+#          Start-Sleep -Seconds 5
+#          conan --version
+#          conan profile detect
+#          $profilePath = "$env:USERPROFILE\.conan2\profiles\default"
+#          Set-Content -Path $profilePath -Value @"
+#            [settings]
+#            os=Windows
+#            arch=x86_64
+#            compiler=msvc
+#            compiler.version=193
+#            compiler.cppstd=23
+#            build_type=Release
+#          "@
+#          conan profile show
+#        shell: powershell
+#
+#      - name: Run Conan install
+#        run: |
+#          $env:Path += ";C:\ProgramData\chocolatey\bin"
+#          Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
+#          refreshenv
+#          Start-Sleep -Seconds 5
+#          conan --version
+#          sudo conan remote update conancenter --url="https://center2.conan.io"
+#          sudo conan install . --build=missing -s compiler.cppstd=23
+#        shell: powershell
+#
+#      - name: Build with CMake
+#        run: |
+#          $env:Path += ";C:\ProgramData\chocolatey\bin"
+#          Import-Module $env:ChocolateyInstall\helpers\chocolateyProfile.psm1
+#          refreshenv
+#          Start-Sleep -Seconds 5
+#          cmake -G "Visual Studio 17 2022" -DCMAKE_PREFIX_PATH=build\generators -A x64 -DCMAKE_BUILD_TYPE=Release .
+#          cmake --build . --config Release
+#        shell: powershell
+#
+#      - uses: xresloader/upload-to-github-release@v1
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+#        with:
+#          file: Release\Ciple-Framework.exe
+#          tags: true
+#          draft: false
 
   build-and-release-linux:
     runs-on: ubuntu-latest
@@ -94,34 +94,33 @@ jobs:
           ninja-build \
           && sudo rm -rf /var/lib/apt/lists/*
       - name: Download Conan & reqs
-        working-directory: .
         run: |
           sudo wget https://github.com/conan-io/conan/releases/download/2.8.0/conan-2.8.0-amd64.deb && sudo dpkg -i conan-2.8.0-amd64.deb
           sudo conan profile detect
-          conan remote update conancenter --url="https://center2.conan.io"
+          sudo conan remote update conancenter --url="https://center2.conan.io"
           PROFILE_PATH="$HOME/.conan2/profiles/default"
-          mkdir -p "$(dirname "$PROFILE_PATH")"
-          cat > "$PROFILE_PATH" <<EOF
-            [settings]
-            os=Linux
-            arch=x86_64
-            compiler=gcc                 
-            compiler.version=11          
-            compiler.libcxx=libstdc++11  
-            compiler.cppstd=23           
-            build_type=Release
-          EOF
-          # نمایش پروفایل
-          conan install . --build=missing
+          sudo conan install . --build=missing -s compiler.cppstd=23
       - name: Build with Cmake
-        working-directory: .
         run: |
           sudo cmake -G Ninja -DCMAKE_PREFIX_PATH=build/Release/generators  -DCMAKE_BUILD_TYPE=Release .
           sudo cmake --build . --config Release
-      - uses: xresloader/upload-to-github-release@v1
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          file: Ciple-Framework
-          tags: true
+          tag_name: ${{ github.ref }} # e.g., refs/tags/v1.0.0
+          release_name: Release ${{ github.ref }}
           draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # Use the upload_url from the create_release step
+          asset_path: ./Ciple-Framework
+          asset_name: Ciple-Framework
+          asset_content_type: application/octet-stream

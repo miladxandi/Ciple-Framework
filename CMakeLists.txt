@@ -1,13 +1,11 @@
-cmake_minimum_required(VERSION 3.25)
+cmake_minimum_required(VERSION 3.29)
 project(Ciple-Framework)
 
 set(CMAKE_CXX_STANDARD 23)
-#set(CMAKE_CXX_STANDARD_REQUIRED ON)
-#set(CMAKE_CXX_EXTENSIONS OFF)
+
 ## تنظیم مسیرهای include و lib
 #include_directories(${CMAKE_SOURCE_DIR}/include ${CMAKE_SOURCE_DIR})
-#link_directories(${CMAKE_SOURCE_DIR}/lib)
-#
+#link_directories(${CMAKE_SOURCE_DIR}/lib)#
 ## یافتن کتابخانه Sentry
 #find_library(SENTRY_LIB sentry PATHS ${CMAKE_SOURCE_DIR}/lib NO_DEFAULT_PATH)
 #if(NOT SENTRY_LIB)
@@ -47,7 +45,9 @@ message("Sources: ${SOURCES}")
 message("Headers: ${HEADERS}")
 
 # تعریف هدف اجرایی
-add_executable(Ciple-Framework ${SOURCES} ${HEADERS})
+add_executable(Ciple-Framework ${SOURCES} ${HEADERS}
+        App/Http/Controller/ContentApiController.cpp
+        App/Http/Controller/ContentApiController.h)
 
 # لینک کردن کتابخانه‌ها
 target_link_libraries(Ciple-Framework
@@ -57,6 +57,7 @@ target_link_libraries(Ciple-Framework
         nlohmann_json::nlohmann_json
         cxxopts::cxxopts
 )
+target_link_libraries(Ciple-Framework ${CONAN_LIBS})
 
 
 # کپی منابع به پوشه خروجی
@@ -69,3 +70,23 @@ if(EXISTS ${RESOURCE_DIR})
             COMMENT "Copying resources to ${OUTPUT_DIR}..."
     )
 endif()
+
+# کپی DLLهای Sentry به پوشه خروجی
+#if(EXISTS ${CMAKE_SOURCE_DIR}/bin)
+#    file(GLOB SENTRY_DLLS ${CMAKE_SOURCE_DIR}/bin/*.dll)
+#    foreach(DLL ${SENTRY_DLLS})
+#        add_custom_command(TARGET Ciple-Framework POST_BUILD
+#                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+#                ${DLL} $<TARGET_FILE_DIR:Ciple-Framework>
+#                COMMENT "Copying ${DLL} to output directory..."
+#        )
+#    endforeach()
+#    file(GLOB SENTRY_DLLS ${CMAKE_SOURCE_DIR}/bin/*.so)
+#    foreach(DLL ${SENTRY_DLLS})
+#        add_custom_command(TARGET Ciple-Framework POST_BUILD
+#                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+#                ${DLL} $<TARGET_FILE_DIR:Ciple-Framework>
+#                COMMENT "Copying ${DLL} to output directory..."
+#        )
+#    endforeach()
+#endif()

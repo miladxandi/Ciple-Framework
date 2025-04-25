@@ -1,0 +1,62 @@
+# Build and run:
+#   docker build -t clion/ubuntu/cpp-env:1.0 -f Dockerfile.cpp-env-ubuntu .
+
+FROM ubuntu:20.04
+
+RUN DEBIAN_FRONTEND="noninteractive" apt-get update && apt-get -y install tzdata
+
+RUN apt-get update \
+  && apt-get install -y build-essential \
+      gcc \
+      g++ \
+      gdb \
+      clang \
+      make \
+      ninja-build \
+      autoconf \
+      automake \
+      libtool \
+      valgrind \
+      locales-all \
+      dos2unix \
+      rsync \
+      tar \
+      python \
+      python-dev \
+      python3.8-venv \
+      wget \
+      libssl-dev \
+  && apt-get clean
+
+# Install CMake 3.31
+RUN wget https://github.com/Kitware/CMake/releases/download/v3.31.0/cmake-3.31.0.tar.gz \
+  && tar -xzf cmake-3.31.0.tar.gz \
+  && cd cmake-3.31.0 \
+  && ./bootstrap --prefix=/usr \
+  && make -j$(nproc) \
+  && make install \
+  && cd .. \
+  && rm -rf cmake-3.31.0 cmake-3.31.0.tar.gz
+
+# Install Conan properly
+RUN python3 -m venv /opt/conanenv
+
+
+# Install pip and Conan in the virtual environment
+RUN /opt/conanenv/bin/python -m pip install --upgrade pip && \
+    /opt/conanenv/bin/python -m pip install conan==2.8.0
+
+RUN useradd -m developer && \
+    mkdir -p /home/developer/.conan2/profiles && \
+    chown -R developer:developer /home/developer
+
+USER developer
+WORKDIR /home/developer
+
+RUN wget https://github.com/conan-io/conan/releases/download/2.8.0/conan-2.8.0-amd64.deb
+RUN dpkg -i conan-2.8.0-amd64.deb
+
+# Configure Conan
+RUN conan profile detect --force && \
+    conan config set general.default_profile=default && \
+    conan remote update conancenter --url="https://center.conan.io"
