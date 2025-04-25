@@ -14,10 +14,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
       - name: Setup MSVC
         uses: ilammy/msvc-dev-cmd@v1
-
       - name: Install dependencies
         run: |
           choco install conan -y --force
@@ -29,7 +27,6 @@ jobs:
           choco install cmake --installargs 'ADD_CMAKE_TO_PATH=System'
           choco install ninja
         shell: powershell
-
       - name: Conan setup
         run: |
           $env:Path += ";C:\ProgramData\chocolatey\bin"
@@ -50,7 +47,6 @@ jobs:
           "@
           conan profile show
         shell: powershell
-
       - name: Run Conan install
         run: |
           $env:Path += ";C:\ProgramData\chocolatey\bin"
@@ -58,10 +54,9 @@ jobs:
           refreshenv
           Start-Sleep -Seconds 5
           conan --version
-          sudo conan remote update conancenter --url="https://center2.conan.io"
-          sudo conan install . --build=missing -s compiler.cppstd=23
+          conan remote update conancenter --url="https://center2.conan.io"
+          conan install . --build=missing -s compiler.cppstd=23
         shell: powershell
-
       - name: Build with CMake
         run: |
           $env:Path += ";C:\ProgramData\chocolatey\bin"
@@ -71,7 +66,6 @@ jobs:
           cmake -G "Visual Studio 17 2022" -DCMAKE_PREFIX_PATH=build\generators -A x64 -DCMAKE_BUILD_TYPE=Release .
           cmake --build . --config Release
         shell: powershell
-
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -82,15 +76,14 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
-
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # Use the upload_url from the create_release step
-          asset_path: ./Ciple-Framework
-          asset_name: Ciple-Framework
+          asset_path: ./Ciple-Framework.exe
+          asset_name: Ciple-Framework.exe
           asset_content_type: application/octet-stream
 
   build-and-release-linux:
