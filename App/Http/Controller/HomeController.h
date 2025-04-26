@@ -3,11 +3,8 @@
 //
 
 #pragma once
-#define HOMECONTROLLER_H
 #include "crow.h"
 using namespace std;
-
-
 using namespace crow::mustache;
 namespace App::Http::Controller {
     class HomeController {

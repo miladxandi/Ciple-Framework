@@ -7,18 +7,20 @@
 #include "crow.h"
 #include "../Helpers/Auth/JwtHelpers.h"
 #include "../App/Http/Controller/ContentApiController.h"
+
 using namespace std;
 using namespace crow;
 using namespace crow::json;
 using namespace ::App::Http::Controller;
+
 inline void addApiRoute(SimpleApp& app) {
-    CROW_ROUTE(app, "/api/").methods(HTTPMethod::GET)
+    CROW_ROUTE(app, "/api/cinema/contents").methods(HTTPMethod::GET)
     ([](const request& req) {
         return ContentApiController::index(req);
     });
     CROW_ROUTE(app, "/api/encode").methods(HTTPMethod::POST)
     ([] {
-        vector<string> permissions = {"read:profile", "write:settings", "delete:account"};
+        vector<string> permissions = {"read:profile", "write:profile", "read:contents", "delete:account"};
 
         wvalue x({{"token", encoder("1", "permission", permissions)}});
         return x;

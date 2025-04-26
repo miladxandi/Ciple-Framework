@@ -11,21 +11,22 @@
 #include "../../Config/App.h"
 #include "../../Config/Auth.h"
 using namespace std;
-using namespace jwt::traits;
+using namespace jwt;
+using namespace traits;
 
 inline string encoder(const string &user_id, const string &claimer, const vector<string>  &claimers) {
 
-    const auto time = jwt::date::clock::now();
-    const auto token = jwt::create<nlohmann_json>()
+    const auto time = date::clock::now();
+    const auto token = create<nlohmann_json>()
                    .set_type("JWT")
                    .set_issuer(issuer)
                    .set_subject(user_id)
-                   .set_payload_claim(claimer,jwt::basic_claim<nlohmann_json>(claimers.begin(),claimers.end()))
+                   .set_payload_claim(claimer,basic_claim<nlohmann_json>(claimers.begin(),claimers.end()))
                    .set_audience(domain)
                    .set_issued_at(time)
                    .set_not_before(time)
                    .set_expires_at(time + std::chrono::months{6})
-                   .sign(jwt::algorithm::ed25519{
+                   .sign(algorithm::ed25519{
                        public_key,
                        private_key,
                        password,
@@ -34,8 +35,8 @@ inline string encoder(const string &user_id, const string &claimer, const vector
     return token;
 }
 
-inline jwt::decoded_jwt<nlohmann_json> decoder(const string &jwt) {
-    auto decoded = jwt::decode<nlohmann_json>(jwt);
+inline decoded_jwt<nlohmann_json> decoder(const string &jwt) {
+    auto decoded = decode<nlohmann_json>(jwt);
     return decoded;
 }
 
